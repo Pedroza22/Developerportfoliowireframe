@@ -41,7 +41,7 @@ export function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-zinc-900/80 backdrop-blur-lg shadow-lg'
+          ? 'bg-brand-5/80 dark:bg-brand-1/80 backdrop-blur-lg shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -50,7 +50,7 @@ export function Navigation() {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-2xl font-black bg-gradient-to-r from-brand-5 via-brand-4 to-brand-5 bg-clip-text text-transparent hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(209,232,226,0.3)]"
           >
             JP
           </button>
@@ -61,14 +61,14 @@ export function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
               >
                 {item.label}
               </button>
             ))}
             <button
               onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+              className="ml-2 p-2 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -79,14 +79,14 @@ export function Navigation() {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg text-brand-1 dark:text-brand-5"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg text-brand-1 dark:text-brand-5"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -96,13 +96,13 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-800">
+        <div className="md:hidden bg-brand-5 dark:bg-brand-1 border-t border-brand-2/20 dark:border-brand-5/20">
           <div className="px-4 py-4 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+                className="block w-full text-left px-4 py-3 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
               >
                 {item.label}
               </button>

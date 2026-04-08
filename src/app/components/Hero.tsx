@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
-import profileImage from 'figma:asset/875eebb2b9b7623c18a1e44a7502a7b918373026.png';
+import profileImage from '@/assets/875eebb2b9b7623c18a1e44a7502a7b918373026.png';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -14,8 +14,15 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-950 dark:to-zinc-900">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-brand-1 dark:bg-brand-1 relative overflow-hidden">
+      {/* Decorative background elements for more "illumination" */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-2/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-3/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-brand-4/10 rounded-full blur-[100px]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -30,7 +37,7 @@ export function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-block"
             >
-              <span className="px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">
+              <span className="px-4 py-2 rounded-full bg-brand-4/10 border border-brand-4/30 text-brand-4 text-sm font-bold backdrop-blur-md shadow-[0_0_15px_rgba(255,203,154,0.1)]">
                 Desarrollador Backend | Tecnólogo en Análisis y Desarrollo
               </span>
             </motion.div>
@@ -39,10 +46,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-5"
             >
               Hola, soy{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-4 via-brand-5 to-brand-3 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(209,232,226,0.2)]">
                 Julián Pedroza
               </span>
             </motion.h1>
@@ -51,7 +58,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl"
+              className="text-xl text-brand-5/90 max-w-2xl leading-relaxed"
             >
               Desarrollador de software con más de 2 años de experiencia en el diseño e implementación 
               de aplicaciones backend y frontend, con enfoque en soluciones escalables, seguras y de alto rendimiento.
@@ -65,13 +72,13 @@ export function Hero() {
             >
               <button
                 onClick={() => scrollToSection('projects')}
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-3 to-brand-4 text-brand-1 font-black hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95"
               >
                 Ver Proyectos
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 rounded-xl border-2 border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all"
+                className="px-8 py-4 rounded-xl border-2 border-brand-5/30 text-brand-5 font-bold hover:bg-brand-5/10 transition-all transform hover:-translate-y-1 active:scale-95 backdrop-blur-sm"
               >
                 Contáctame
               </button>
@@ -87,7 +94,7 @@ export function Hero() {
                 href="https://github.com/Pedroza22"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
+                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
               >
                 <Github className="w-6 h-6" />
               </a>
@@ -95,13 +102,13 @@ export function Hero() {
                 href="https://linkedin.com/in/julian-pedrozaospina"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
+                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
                 href="mailto:julianpedrozaospina@gmail.com"
-                className="p-3 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
+                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
               >
                 <Mail className="w-6 h-6" />
               </a>
@@ -115,12 +122,12 @@ export function Hero() {
             transition={{ duration: 0.8 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-3 to-brand-4 rounded-3xl blur-3xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"></div>
               <img
                 src={profileImage}
                 alt="Julián Pedroza"
-                className="relative w-64 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[28rem] rounded-3xl shadow-2xl object-cover object-top"
+                className="relative w-64 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[28rem] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] object-cover object-top border border-brand-5/20 group-hover:border-brand-4/50 transition-colors duration-500"
               />
             </div>
           </motion.div>
@@ -135,7 +142,7 @@ export function Hero() {
         >
           <button
             onClick={() => scrollToSection('about')}
-            className="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="flex flex-col items-center gap-2 text-brand-5/60 hover:text-brand-5 transition-colors"
           >
             <span className="text-sm font-medium">Scroll</span>
             <motion.div

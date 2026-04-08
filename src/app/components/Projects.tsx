@@ -137,7 +137,7 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-zinc-900">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,10 +146,10 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-brand-1 dark:text-brand-5 mb-4">
             Proyectos Destacados
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-1/70 dark:text-brand-5/70 max-w-3xl mx-auto">
             Experiencia real en proyectos de producción y desarrollo empresarial
           </p>
         </motion.div>
@@ -162,8 +162,8 @@ export function Projects() {
               onClick={() => setFilter(category)}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 filter === category
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700'
+                  ? 'bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 shadow-lg'
+                  : 'bg-white dark:bg-zinc-800 text-brand-1 dark:text-brand-5 hover:bg-brand-5 dark:hover:bg-brand-1 border border-brand-2/20 dark:border-brand-5/20'
               }`}
             >
               {category === 'all' ? 'Todos' : category}
@@ -181,15 +181,15 @@ export function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => setSelectedProject(project)}
-              className="group cursor-pointer bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-2xl transition-all"
+              className="group cursor-pointer bg-white dark:bg-brand-1/50 rounded-2xl overflow-hidden border border-brand-2/20 dark:border-brand-5/20 hover:border-brand-2 dark:hover:border-brand-2 hover:shadow-2xl transition-all"
             >
               {/* Project Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-brand-2 to-brand-3 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Code2 className="w-16 h-16 text-white/30" />
+                  <Code2 className="w-16 h-16 text-brand-5/30" />
                 </div>
                 <div className="absolute top-4 right-4">
-                  <span className="flex items-center gap-2 px-3 py-1 rounded-lg bg-white/90 dark:bg-zinc-900/90 text-sm font-medium text-gray-900 dark:text-white">
+                  <span className="flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-5/90 dark:bg-brand-1/90 text-sm font-medium text-brand-1 dark:text-brand-5">
                     {getCategoryIcon(project.category)}
                     {project.category}
                   </span>
@@ -198,10 +198,10 @@ export function Projects() {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-2 group-hover:text-brand-2 dark:group-hover:text-brand-2 transition-colors line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                <p className="text-brand-1/70 dark:text-brand-5/70 mb-4 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -210,13 +210,13 @@ export function Projects() {
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-zinc-700 text-gray-700 dark:text-gray-300 text-xs font-medium"
+                      className="px-3 py-1 rounded-lg bg-brand-5 dark:bg-brand-1 text-brand-2 dark:text-brand-3 text-xs font-medium"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-zinc-700 text-gray-700 dark:text-gray-300 text-xs font-medium">
+                    <span className="px-3 py-1 rounded-lg bg-brand-5 dark:bg-brand-1 text-brand-2 dark:text-brand-3 text-xs font-medium">
                       +{project.technologies.length - 3}
                     </span>
                   )}
@@ -230,7 +230,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="flex items-center gap-2 text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 dark:hover:text-brand-2 transition-colors"
                     >
                       <Github className="w-4 h-4" />
                       <span className="text-sm font-medium">Code</span>
@@ -242,7 +242,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="flex items-center gap-2 text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 dark:hover:text-brand-2 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
                       <span className="text-sm font-medium">Ver sitio</span>
@@ -258,7 +258,7 @@ export function Projects() {
       {/* Project Detail Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-1/50 backdrop-blur-sm"
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
@@ -266,44 +266,44 @@ export function Projects() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white dark:bg-zinc-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-zinc-700"
+            className="bg-white dark:bg-brand-1 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-brand-2/20 dark:border-brand-5/20"
           >
             {/* Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
+            <div className="sticky top-0 bg-gradient-to-r from-brand-2 to-brand-3 p-8 text-brand-5">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-lg bg-brand-5/20 hover:bg-brand-5/30 transition-colors"
               >
                 <ExternalLink className="w-5 h-5 rotate-45" />
               </button>
               <h3 className="text-3xl font-bold mb-2 pr-12">{selectedProject.title}</h3>
-              <p className="text-white/90">{selectedProject.description}</p>
+              <p className="text-brand-5/90">{selectedProject.description}</p>
             </div>
 
             {/* Content */}
             <div className="p-8 space-y-6">
               {/* Description */}
               <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-3">
                   Descripción del Proyecto
                 </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-brand-1/80 dark:text-brand-5/80 leading-relaxed">
                   {selectedProject.longDescription}
                 </p>
               </div>
 
               {/* Features */}
               <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-3">
                   Características y Logros
                 </h4>
                 <ul className="space-y-2">
                   {selectedProject.features.map((feature, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-gray-700 dark:text-gray-300"
+                      className="flex items-start gap-2 text-brand-1/80 dark:text-brand-5/80"
                     >
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0"></span>
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-2 flex-shrink-0"></span>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -312,14 +312,14 @@ export function Projects() {
 
               {/* Technologies */}
               <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-3">
                   Tecnologías Utilizadas
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-zinc-700 dark:to-zinc-700 text-gray-900 dark:text-white font-medium border border-blue-200 dark:border-zinc-600"
+                      className="px-4 py-2 rounded-lg bg-gradient-to-r from-brand-5/50 to-brand-4/50 dark:from-brand-1/50 dark:to-brand-2/50 text-brand-1 dark:text-brand-5 font-medium border border-brand-2/20 dark:border-brand-5/20"
                     >
                       {tech}
                     </span>
@@ -335,7 +335,7 @@ export function Projects() {
                       href={selectedProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+                      className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-1 dark:bg-brand-5 text-brand-5 dark:text-brand-1 font-medium hover:opacity-90 transition-colors"
                     >
                       <Github className="w-5 h-5" />
                       Ver en GitHub
@@ -346,10 +346,10 @@ export function Projects() {
                       href={selectedProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg transition-all"
+                      className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 font-medium hover:shadow-lg transition-all"
                     >
                       <ExternalLink className="w-5 h-5" />
-                      Ver Proyecto en Vivo
+                      Ver sitio
                     </a>
                   )}
                 </div>

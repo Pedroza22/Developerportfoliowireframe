@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { GraduationCap, Award, BookOpen, Calendar, Languages } from 'lucide-react';
+import { GraduationCap, Award, BookOpen, Calendar, Languages, Cpu, Globe2 } from 'lucide-react';
 
 export function Education() {
   const education = [
@@ -52,14 +52,14 @@ export function Education() {
       title: 'Machine Learning aplicado a sostenibilidad',
       issuer: 'Universidad Cooperativa de Colombia e IBM',
       year: '2024',
-      icon: '🤖',
+      icon: <Cpu className="w-8 h-8 text-brand-2" />,
       description: 'Ejemplos prácticos en sostenibilidad y uso general de ML'
     },
     {
       title: 'Inglés - Nivel B1 Intermedio',
       issuer: 'Centro de Idiomas - Universidad de Nariño',
       year: '2024 - En curso',
-      icon: '🌐',
+      icon: <Globe2 className="w-8 h-8 text-brand-2" />,
       description: 'Inglés intermedio para comunicación técnica'
     }
   ];
@@ -70,7 +70,7 @@ export function Education() {
   ];
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-zinc-900">
+    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,10 +79,10 @@ export function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-brand-1 dark:text-brand-5 mb-4">
             Educación y Formación
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-1/70 dark:text-brand-5/70 max-w-3xl mx-auto">
             Mi trayectoria académica y certificaciones profesionales
           </p>
         </motion.div>
@@ -96,12 +96,12 @@ export function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white dark:bg-zinc-800 rounded-2xl p-8 border border-gray-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-xl transition-all"
+              className="bg-white dark:bg-brand-1/50 rounded-2xl p-8 border border-brand-2/20 dark:border-brand-5/20 hover:border-brand-2 dark:hover:border-brand-2 hover:shadow-xl transition-all"
             >
               <div className="flex flex-col lg:flex-row gap-6">
                 {/* Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white shadow-lg">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-2 to-brand-3 flex items-center justify-center text-brand-5 shadow-lg">
                     {edu.icon}
                   </div>
                 </div>
@@ -110,37 +110,37 @@ export function Education() {
                 <div className="flex-1">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      <h3 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-1">
                         {edu.degree}
                       </h3>
-                      <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
+                      <div className="flex items-center gap-2 text-brand-2 dark:text-brand-3 font-semibold">
                         <Award className="w-4 h-4" />
                         <span>{edu.institution}</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-start lg:items-end gap-1 mt-2 lg:mt-0">
-                      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                      <div className="flex items-center gap-2 text-brand-1/60 dark:text-brand-5/60 text-sm">
                         <Calendar className="w-4 h-4" />
                         <span>{edu.period}</span>
                       </div>
-                      <span className="text-sm text-gray-500 dark:text-gray-500">
+                      <span className="text-sm text-brand-1/50 dark:text-brand-5/50">
                         {edu.location}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-brand-1/80 dark:text-brand-5/80 mb-4">
                     {edu.description}
                   </p>
 
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    <h4 className="font-semibold text-brand-1 dark:text-brand-5 mb-2">
                       Destacados:
                     </h4>
                     <ul className="grid sm:grid-cols-2 gap-2">
                       {edu.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-300 text-sm">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0"></span>
+                        <li key={i} className="flex items-start gap-2 text-brand-1/70 dark:text-brand-5/70 text-sm">
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-2 flex-shrink-0"></span>
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -162,8 +162,8 @@ export function Education() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <BookOpen className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+              <BookOpen className="w-8 h-8 text-brand-2 dark:text-brand-3" />
+              <h3 className="text-3xl font-bold text-brand-1 dark:text-brand-5">
                 Cursos y Certificaciones
               </h3>
             </div>
@@ -175,21 +175,21 @@ export function Education() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-gray-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-xl transition-all"
+                  className="bg-white dark:bg-brand-1/50 p-6 rounded-2xl border border-brand-2/20 dark:border-brand-5/20 hover:border-brand-2 dark:hover:border-brand-2 hover:shadow-xl transition-all"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="text-4xl">{cert.icon}</div>
+                    <div className="flex-shrink-0">{cert.icon}</div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-1">
+                      <h4 className="font-bold text-brand-1 dark:text-brand-5 mb-1">
                         {cert.title}
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      <p className="text-sm text-brand-1/60 dark:text-brand-5/60 mb-2">
                         {cert.issuer}
                       </p>
-                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                      <p className="text-sm text-brand-1/80 dark:text-brand-5/80 mb-2">
                         {cert.description}
                       </p>
-                      <span className="inline-block px-3 py-1 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium">
+                      <span className="inline-block px-3 py-1 rounded-lg bg-brand-5 dark:bg-brand-1 text-brand-2 dark:text-brand-3 text-xs font-medium">
                         {cert.year}
                       </span>
                     </div>
@@ -207,12 +207,12 @@ export function Education() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <Languages className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+              <Languages className="w-8 h-8 text-brand-2 dark:text-brand-3" />
+              <h3 className="text-3xl font-bold text-brand-1 dark:text-brand-5">
                 Idiomas
               </h3>
             </div>
-            <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl border border-gray-200 dark:border-zinc-700 h-[calc(100%-4rem)]">
+            <div className="bg-white dark:bg-brand-1/50 p-8 rounded-2xl border border-brand-2/20 dark:border-brand-5/20 h-[calc(100%-4rem)]">
               <div className="space-y-6">
                 {languages.map((lang, index) => (
                   <motion.div
@@ -221,13 +221,13 @@ export function Education() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-zinc-900 dark:to-zinc-900 rounded-xl border border-blue-200 dark:border-zinc-700"
+                    className="p-4 bg-gradient-to-br from-brand-5/50 to-brand-4/50 dark:from-brand-1 dark:to-brand-2 rounded-xl border border-brand-2/20 dark:border-brand-5/20"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="font-bold text-gray-900 dark:text-white text-lg">
+                      <h4 className="font-bold text-brand-1 dark:text-brand-5 text-lg">
                         {lang.language}
                       </h4>
-                      <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium">
+                      <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 text-sm font-medium">
                         {lang.level}
                       </span>
                     </div>
@@ -235,8 +235,8 @@ export function Education() {
                 ))}
               </div>
 
-              <div className="mt-8 p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-zinc-900 dark:to-zinc-900 rounded-xl border border-blue-200 dark:border-zinc-700">
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+              <div className="mt-8 p-4 bg-gradient-to-br from-brand-5/50 to-brand-4/50 dark:from-brand-1 dark:to-brand-2 rounded-xl border border-brand-2/20 dark:border-brand-5/20">
+                <p className="text-sm text-brand-1/70 dark:text-brand-5/70">
                   Actualmente estudiando inglés en el Centro de Idiomas de la Universidad de Nariño 
                   para mejorar habilidades de comunicación técnica internacional.
                 </p>

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download } from 'lucide-react';
+import cvFile from '@/assets/Hoja de Vida Julian Pedroza O-7.pdf';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -34,20 +35,20 @@ export function Contact() {
       title: 'Email Principal',
       value: 'julianpedrozaospina@gmail.com',
       link: 'mailto:julianpedrozaospina@gmail.com',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-brand-2 to-brand-3'
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Teléfono',
       value: '+57 321 989 1112',
       link: 'tel:+573219891112',
-      gradient: 'from-green-500 to-emerald-500'
+      gradient: 'from-brand-2 to-brand-3'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Ubicación',
       value: 'Pasto, Nariño, Colombia',
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: 'from-brand-2 to-brand-3'
     }
   ];
 
@@ -125,6 +126,23 @@ export function Contact() {
                 ))}
               </div>
             </div>
+
+            {/* CV Download */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <a
+                href={cvFile}
+                download="Hoja de Vida Julian Pedroza O-7.pdf"
+                className="flex items-center justify-center gap-3 w-full p-4 bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 font-bold rounded-2xl hover:shadow-lg hover:shadow-brand-2/50 transition-all group"
+              >
+                <Download className="w-6 h-6 group-hover:animate-bounce" />
+                <span>Descargar Hoja de Vida (PDF)</span>
+              </a>
+            </motion.div>
 
             {/* Availability */}
             <motion.div
@@ -291,7 +309,7 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all"
+                  className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 font-bold hover:shadow-lg hover:shadow-brand-2/50 transition-all"
                 >
                   <Send className="w-5 h-5" />
                   Enviar Mensaje
