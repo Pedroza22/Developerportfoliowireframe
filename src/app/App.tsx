@@ -1,25 +1,30 @@
-import { WireframeNavigation } from './components/wireframes/WireframeNavigation';
-import { WireframeHero } from './components/wireframes/WireframeHero';
-import { WireframeAbout } from './components/wireframes/WireframeAbout';
-import { WireframeProjects } from './components/wireframes/WireframeProjects';
-import { WireframeExperience } from './components/wireframes/WireframeExperience';
-import { WireframeEducation } from './components/wireframes/WireframeEducation';
-import { WireframeHobbies } from './components/wireframes/WireframeHobbies';
-import { WireframeContact } from './components/wireframes/WireframeContact';
-import { WireframeFooter } from './components/wireframes/WireframeFooter';
+import { Navigation } from './components/Navigation';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { Projects } from './components/Projects';
+import { Experience } from './components/Experience';
+import { Education } from './components/Education';
+import { Hobbies } from './components/Hobbies';
+import { Testimonials } from './components/Testimonials';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
+import { ThemeProvider } from './context/ThemeContext';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <WireframeNavigation />
-      <WireframeHero />
-      <WireframeAbout />
-      <WireframeProjects />
-      <WireframeExperience />
-      <WireframeEducation />
-      <WireframeHobbies />
-      <WireframeContact />
-      <WireframeFooter />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-zinc-950 transition-colors">
+        <Navigation />
+        <Hero />
+        <About />
+        <Projects />
+        <Experience />
+        <Education />
+        <Hobbies />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
