@@ -98,6 +98,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
+                aria-label="GitHub Profile"
               >
                 <Github className="w-6 h-6" />
               </a>
@@ -106,12 +107,14 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
+                aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
                 href={`mailto:${CONTACT_INFO.email}`}
                 className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
+                aria-label="Send Email"
               >
                 <Mail className="w-6 h-6" />
               </a>

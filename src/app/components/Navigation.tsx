@@ -128,7 +128,7 @@ export function Navigation() {
                 setLanguage(languages[nextIndex].code);
               }}
               className="p-2 rounded-lg text-brand-1 dark:text-brand-5 flex items-center gap-1"
-              aria-label="Change language"
+              aria-label={`Change language, current: ${language}`}
             >
               <Languages className="w-5 h-5" />
               <span className="text-xs font-bold uppercase">{language}</span>
@@ -136,13 +136,14 @@ export function Navigation() {
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-brand-1 dark:text-brand-5"
-              aria-label="Toggle theme"
+              aria-label={theme === 'dark' ? "Switch to light theme" : "Switch to dark theme"}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg text-brand-1 dark:text-brand-5"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
