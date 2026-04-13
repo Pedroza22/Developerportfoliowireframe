@@ -3,6 +3,7 @@ export const en = {
   'common.viewCode': 'View Code',
   'common.viewLive': 'View Live',
   'common.viewSite': 'View Site',
+  'common.viewDetails': 'View Details',
   'common.close': 'Close',
   'nav.home': 'Home',
   'nav.about': 'About Me',
@@ -145,6 +146,13 @@ export const en = {
   'hobbies.interests.edge': 'Edge Computing',
   'hobbies.philosophy.quote': '"Continuous learning and a passion for technology are the keys to creating innovative solutions"',
   'hobbies.philosophy.text': 'I firmly believe in the balance between work and personal life. My hobbies help me maintain the creativity and focus needed to face complex technical challenges.',
+
+  'footer.description': 'Backend Developer | Information Systems Analysis and Development Technologist. Over 2 years of experience creating scalable and high-performance solutions.',
+  'footer.quickLinks': 'Quick Links',
+  'footer.contact': 'Contact',
+  'footer.madeWith': 'Made with',
+  'footer.by': 'by',
+  'footer.allRights': 'All rights reserved.',
 
   'contact.title': 'Contact',
   'contact.subtitle': 'Have a project in mind? Let\'s talk! I am available for remote work and freelance projects.',

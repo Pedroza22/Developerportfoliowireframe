@@ -3,6 +3,7 @@ export const ja = {
   'common.viewCode': 'コードを見る',
   'common.viewLive': 'ライブで見る',
   'common.viewSite': 'サイトを見る',
+  'common.viewDetails': '詳細を見る',
   'common.close': '閉じる',
   'nav.home': 'ホーム',
   'nav.about': '自己紹介',
@@ -75,6 +76,13 @@ export const ja = {
   'hobbies.interests.title': '技術的な関心分野',
   'hobbies.philosophy.quote': '「継続的な学習とテクノロジーへの情熱が、革新的なソリューションを生み出す鍵である」',
   'hobbies.philosophy.text': '私は仕事と私生活のバランスを強く信じています。私の趣味は、複雑な技術的課題に直面するために必要な創造性と集中力を維持するのに役立ちます。',
+
+  'footer.description': 'バックエンドエンジニア | 分析・開発技術者。スケーラブルで高性能なソリューションを作成する2年以上の経験。',
+  'footer.quickLinks': 'クイックリンク',
+  'footer.contact': '連絡先',
+  'footer.madeWith': '作成：',
+  'footer.by': 'by',
+  'footer.allRights': '全著作権所有。',
 
   'contact.title': 'お問い合わせ',
   'contact.subtitle': 'プロジェクトをお考えですか？お気軽にご相談ください。リモートワークやフリーランスのプロジェクトも受け付けています。',

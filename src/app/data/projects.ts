@@ -19,7 +19,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.u2group.longDescription',
     technologies: ['Next.js', 'Django REST', 'PostgreSQL', 'Google Maps API', 'JWT', 'TailwindCSS'],
     category: 'Full Stack',
-    image: 'architecture-platform',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
     liveUrl: 'https://www.u2.group',
     featuresKeys: [
       'projects.u2group.features.0',
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.soat.longDescription',
     technologies: ['Java', 'Spring Boot', 'Microservicios', 'AWS', 'PostgreSQL', 'Docker'],
     category: 'Backend',
-    image: 'insurance-microservices',
+    image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800&auto=format&fit=crop',
     featuresKeys: [
       'projects.soat.features.0',
       'projects.soat.features.1',
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.orchestration.longDescription',
     technologies: ['Java', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'Azure', 'Docker'],
     category: 'Backend',
-    image: 'service-orchestration',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800&auto=format&fit=crop',
     featuresKeys: [
       'projects.orchestration.features.0',
       'projects.orchestration.features.1',
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.allies.longDescription',
     technologies: ['Java', 'Spring Boot', 'MySQL', 'JavaScript', 'REST APIs'],
     category: 'Backend',
-    image: 'internal-apps',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop',
     featuresKeys: [
       'projects.allies.features.0',
       'projects.allies.features.1',
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.parish.longDescription',
     technologies: ['SQL', 'MySQL', 'Excel', 'VBA', 'Python'],
     category: 'Backend',
-    image: 'parish-system',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e90526354c?q=80&w=800&auto=format&fit=crop',
     featuresKeys: [
       'projects.parish.features.0',
       'projects.parish.features.1',

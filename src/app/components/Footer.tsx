@@ -1,6 +1,10 @@
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { CONTACT_INFO, SOCIAL_LINKS } from '../config/constants';
 
 export function Footer() {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -16,29 +20,11 @@ export function Footer() {
   };
 
   const quickLinks = [
-    { label: 'Sobre Mí', id: 'about' },
-    { label: 'Proyectos', id: 'projects' },
-    { label: 'Experiencia', id: 'experience' },
-    { label: 'Educación', id: 'education' },
-    { label: 'Testimonios', id: 'testimonials' }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className="w-5 h-5" />,
-      url: 'https://github.com/Pedroza22',
-      label: 'GitHub'
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      url: 'https://linkedin.com/in/julian-pedrozaospina',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      url: 'mailto:julianpedrozaospina@gmail.com',
-      label: 'Email'
-    }
+    { labelKey: 'nav.about', id: 'about' },
+    { labelKey: 'nav.projects', id: 'projects' },
+    { labelKey: 'nav.experience', id: 'experience' },
+    { labelKey: 'nav.education', id: 'education' },
+    { labelKey: 'nav.contact', id: 'contact' }
   ];
 
   return (
@@ -51,20 +37,19 @@ export function Footer() {
               Julián Pedroza Ospina
             </div>
             <p className="text-brand-1/70 dark:text-brand-5/70 mb-4 max-w-md">
-              Desarrollador Backend | Tecnólogo en Análisis y Desarrollo de Sistemas de Información.
-              Más de 2 años de experiencia creando soluciones escalables y de alto rendimiento.
+              {t('footer.description')}
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((social) => (
+              {SOCIAL_LINKS.map((social) => (
                 <a
-                  key={social.label}
+                  key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-xl bg-brand-2/10 text-brand-2 hover:bg-gradient-to-r hover:from-brand-2 hover:to-brand-3 hover:text-brand-5 transition-all"
-                  aria-label={social.label}
+                  aria-label={social.name}
                 >
-                  {social.icon}
+                  {social.name === 'GitHub' ? <Github className="w-5 h-5" /> : <Linkedin className="w-5 h-5" />}
                 </a>
               ))}
             </div>
@@ -73,7 +58,7 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="font-bold text-brand-1 dark:text-brand-5 mb-4">
-              Enlaces Rápidos
+              {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -82,7 +67,7 @@ export function Footer() {
                     onClick={() => scrollToSection(link.id)}
                     className="text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 dark:hover:text-brand-3 transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </button>
                 </li>
               ))}
@@ -92,49 +77,40 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-bold text-brand-1 dark:text-brand-5 mb-4">
-              Contacto
+              {t('footer.contact')}
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="mailto:julianpedrozaospina@gmail.com"
-                  className="text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 dark:hover:text-brand-3 transition-colors"
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 transition-colors flex items-center gap-2"
                 >
-                  julianpedrozaospina@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+573219891112"
-                  className="text-brand-1/60 dark:text-brand-5/60 hover:text-brand-2 dark:hover:text-brand-3 transition-colors"
-                >
-                  +57 321 989 1112
+                  <Mail className="w-4 h-4" />
+                  {CONTACT_INFO.email}
                 </a>
               </li>
               <li className="text-brand-1/60 dark:text-brand-5/60">
-                Pasto, Nariño, Colombia
-              </li>
-              <li className="text-brand-1/40 dark:text-brand-5/40 text-xs mt-2">
-                Disponible para trabajo remoto
+                {CONTACT_INFO.location}
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-brand-2/20 dark:border-brand-5/20 gap-4">
-          <div className="flex items-center gap-2 text-brand-1/60 dark:text-brand-5/60 text-sm">
-            <span>© {new Date().getFullYear()} Julián Pedroza Ospina. Hecho con</span>
-            <Heart className="w-4 h-4 text-brand-3 fill-brand-3" />
-            <span>y código</span>
+        <div className="pt-8 border-t border-brand-1/10 dark:border-brand-5/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-brand-1/50 dark:text-brand-5/50 text-sm">
+            © {new Date().getFullYear()} Julián Pedroza. {t('footer.allRights')}
+          </p>
+          <div className="flex items-center gap-2 text-brand-1/50 dark:text-brand-5/50 text-sm">
+            <span>{t('footer.madeWith')}</span>
+            <Heart className="w-4 h-4 text-red-500 fill-current" />
+            <span>{t('footer.by')} Julián</span>
           </div>
-
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 hover:shadow-lg transition-all"
+            className="p-3 rounded-full bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-2 hover:text-brand-5 transition-all"
+            aria-label="Scroll to top"
           >
-            <ArrowUp className="w-4 h-4" />
-            <span className="text-sm font-medium">Volver arriba</span>
+            <ArrowUp className="w-5 h-5" />
           </button>
         </div>
       </div>

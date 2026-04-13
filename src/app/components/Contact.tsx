@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download, AlertCircle, Loader2 } from 'lucide-react';
-import cvFile from '@/assets/Hoja de Vida Julian Pedroza O-7.pdf';
+import cvFile from '@/assets/CV_Julian_Pedroza.pdf';
 import { useLanguage } from '../context/LanguageContext';
 import { CONTACT_INFO, SOCIAL_LINKS } from '../config/constants';
 import { contactService, type ContactFormData } from '../services/contactService';

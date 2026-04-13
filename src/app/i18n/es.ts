@@ -3,6 +3,7 @@ export const es = {
   'common.viewCode': 'Ver Código',
   'common.viewLive': 'Ver en Vivo',
   'common.viewSite': 'Ver Sitio',
+  'common.viewDetails': 'Ver Detalles',
   'common.close': 'Cerrar',
   'nav.home': 'Inicio',
   'nav.about': 'Sobre Mí',
@@ -145,6 +146,13 @@ export const es = {
   'hobbies.interests.edge': 'Edge Computing',
   'hobbies.philosophy.quote': '"El aprendizaje continuo y la pasión por la tecnología son las claves para crear soluciones innovadoras"',
   'hobbies.philosophy.text': 'Creo firmemente en el equilibrio entre trabajo y vida personal. Mis hobbies me ayudan a mantener la creatividad y el enfoque necesarios para enfrentar desafíos técnicos complejos.',
+
+  'footer.description': 'Desarrollador Backend | Tecnólogo en Análisis y Desarrollo de Sistemas de Información. Más de 2 años de experiencia creando soluciones escalables y de alto rendimiento.',
+  'footer.quickLinks': 'Enlaces Rápidos',
+  'footer.contact': 'Contacto',
+  'footer.madeWith': 'Hecho con',
+  'footer.by': 'por',
+  'footer.allRights': 'Todos los derechos reservados.',
 
   'contact.title': 'Contacto',
   'contact.subtitle': '¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para trabajo remoto y proyectos freelance.',

@@ -75,12 +75,19 @@ export function Projects() {
               onClick={() => setSelectedProject(project)}
               className="group cursor-pointer bg-brand-1/5 dark:bg-brand-5/5 rounded-2xl overflow-hidden border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-2 dark:hover:border-brand-2 hover:shadow-2xl transition-all"
             >
-              <div className="h-48 bg-gradient-to-br from-brand-2 to-brand-3 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Code2 className="w-16 h-16 text-brand-5/30" />
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={t(project.titleKey)}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-1/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <span className="text-brand-5 font-bold flex items-center gap-2">
+                    {t('common.viewDetails')} <ExternalLink className="w-4 h-4" />
+                  </span>
                 </div>
                 <div className="absolute top-4 right-4">
-                  <span className="flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-5/90 dark:bg-brand-1/90 text-sm font-medium text-brand-1 dark:text-brand-5">
+                  <span className="flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-5/90 dark:bg-brand-1/90 text-sm font-medium text-brand-1 dark:text-brand-5 shadow-lg">
                     {getCategoryIcon(project.category)}
                     {project.category}
                   </span>

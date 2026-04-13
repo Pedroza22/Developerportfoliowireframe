@@ -3,6 +3,7 @@ export const pt = {
   'common.viewCode': 'Ver Código',
   'common.viewLive': 'Ver ao Vivo',
   'common.viewSite': 'Ver Site',
+  'common.viewDetails': 'Ver Detalhes',
   'common.close': 'Fechar',
   'nav.home': 'Início',
   'nav.about': 'Sobre Mim',
@@ -75,6 +76,13 @@ export const pt = {
   'hobbies.interests.title': 'Áreas de Interesse Tecnológico',
   'hobbies.philosophy.quote': '"O aprendizado contínuo e a paixão pela tecnologia são as chaves para criar soluções inovadoras"',
   'hobbies.philosophy.text': 'Acredito firmemente no equilíbrio entre trabalho e vida pessoal. Meus hobbies me ajudam a manter a criatividade e o foco necessários para enfrentar desafios técnicos complexos.',
+
+  'footer.description': 'Desenvolvedor Backend | Tecnólogo em Análise e Desenvolvimento de Sistemas de Informação. Mais de 2 anos de experiência criando soluções escaláveis e de alto desempenho.',
+  'footer.quickLinks': 'Links Rápidos',
+  'footer.contact': 'Contato',
+  'footer.madeWith': 'Feito com',
+  'footer.by': 'por',
+  'footer.allRights': 'Todos os direitos reservados.',
 
   'contact.title': 'Contato',
   'contact.subtitle': 'Tem um projeto em mente? Vamos conversar! Estou disponível para trabalho remoto e projetos freelance.',
