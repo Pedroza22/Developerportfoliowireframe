@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { es } from '../i18n/es';
 import { en } from '../i18n/en';
-// Importar pt y ja cuando estén creados
-// import { pt } from '../i18n/pt';
-// import { ja } from '../i18n/ja';
+import { pt } from '../i18n/pt';
+import { ja } from '../i18n/ja';
 
 export type Language = 'es' | 'en' | 'pt' | 'ja';
 
@@ -16,8 +15,8 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   es,
   en,
-  pt: es, // Fallback temporal a es hasta crear pt
-  ja: es, // Fallback temporal a es hasta crear ja
+  pt,
+  ja,
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
