@@ -2,8 +2,10 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download } from 'lucide-react';
 import cvFile from '@/assets/Hoja de Vida Julian Pedroza O-7.pdf';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -68,7 +70,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-zinc-900">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,11 +79,11 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Contacto
+          <h2 className="text-4xl sm:text-5xl font-bold text-brand-1 dark:text-brand-5 mb-4">
+            {t('contact.title')}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            ¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para trabajo remoto y proyectos freelance.
+          <p className="text-xl text-brand-1/70 dark:text-brand-5/70 max-w-3xl mx-auto">
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -95,120 +97,89 @@ export function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Información de Contacto
+              <h3 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-6">
+                {t('contact.info')}
               </h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.div
-                    key={index}
+                    key={info.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className={`group flex items-center gap-4 p-4 bg-white dark:bg-zinc-800 rounded-2xl border border-gray-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg transition-all ${
-                      info.link ? 'cursor-pointer' : ''
-                    }`}
-                    onClick={() => info.link && window.open(info.link, '_self')}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-brand-1/5 dark:bg-brand-5/5 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-3 transition-colors group"
                   >
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${info.gradient} text-white group-hover:scale-110 transition-transform`}>
+                    <div className={`p-3 rounded-lg bg-gradient-to-br ${info.gradient} text-brand-1 shadow-lg`}>
                       {info.icon}
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-brand-1/60 dark:text-brand-5/60 font-medium">
                         {info.title}
                       </p>
-                      <p className="font-semibold text-gray-900 dark:text-white">
-                        {info.value}
-                      </p>
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className="text-lg font-semibold text-brand-1 dark:text-brand-5 hover:text-brand-3 transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-lg font-semibold text-brand-1 dark:text-brand-5">
+                          {info.value}
+                        </p>
+                      )}
                     </div>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* CV Download */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <a
-                href={cvFile}
-                download="Hoja de Vida Julian Pedroza O-7.pdf"
-                className="flex items-center justify-center gap-3 w-full p-4 bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 font-bold rounded-2xl hover:shadow-lg hover:shadow-brand-2/50 transition-all group"
-              >
-                <Download className="w-6 h-6 group-hover:animate-bounce" />
-                <span>Descargar Hoja de Vida (PDF)</span>
-              </a>
-            </motion.div>
+              <div className="pt-8">
+                <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-6">
+                  {t('contact.social')}
+                </h4>
+                <div className="flex gap-4">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 rounded-xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-3 hover:text-brand-1 transition-all group border border-brand-1/10 dark:border-brand-5/10 shadow-lg"
+                      title={social.name}
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-            {/* Availability */}
+            {/* CV Download Card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-zinc-800 dark:to-zinc-800 rounded-2xl border border-gray-200 dark:border-zinc-700"
+              className="p-8 rounded-3xl bg-gradient-to-br from-brand-2/10 to-brand-3/10 border border-brand-2/20 backdrop-blur-sm shadow-xl"
             >
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                Disponibilidad
-              </h4>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Trabajo remoto</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Proyectos freelance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Colaboraciones internacionales</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Consultoría técnica</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                Redes Sociales
-              </h4>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-4 bg-white dark:bg-zinc-800 rounded-2xl border border-gray-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg transition-all"
-                  >
-                    <div className="flex flex-col items-center gap-2">
-                      <div className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {social.icon}
-                      </div>
-                      <div className="text-center">
-                        <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                          {social.name}
-                        </p>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">
-                          {social.handle}
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                ))}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="text-center sm:text-left">
+                  <h4 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-2">
+                    {t('contact.cvTitle')}
+                  </h4>
+                  <p className="text-brand-1/70 dark:text-brand-5/70">
+                    {t('contact.cvSubtitle')}
+                  </p>
+                </div>
+                <a
+                  href={cvFile}
+                  download="CV_Julian_Pedroza.pdf"
+                  className="flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-2 via-brand-3 to-brand-4 text-brand-1 font-black hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 group"
+                >
+                  <Download className="w-5 h-5 group-hover:animate-bounce" />
+                  {t('contact.cvDownload')}
+                </a>
               </div>
             </motion.div>
           </motion.div>
@@ -219,100 +190,97 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white dark:bg-zinc-800 rounded-2xl p-8 border border-gray-200 dark:border-zinc-700 shadow-xl"
+            className="bg-brand-1/5 dark:bg-brand-5/5 p-8 rounded-3xl border border-brand-1/10 dark:border-brand-5/10 backdrop-blur-sm shadow-2xl"
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Envíame un Mensaje
+            <h3 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-8">
+              {t('contact.formTitle')}
             </h3>
 
             {isSubmitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-12"
+                className="flex flex-col items-center justify-center py-12 text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+                <div className="w-20 h-20 bg-brand-4/20 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-12 h-12 text-brand-4" />
                 </div>
-                <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                  ¡Mensaje Enviado!
+                <h4 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-2">
+                  {t('contact.success')}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400 text-center">
-                  Gracias por contactarme. Te responderé pronto.
+                <p className="text-brand-1/70 dark:text-brand-5/70">
+                  {t('contact.successMsg')}
                 </p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none"
-                    placeholder="Tu nombre"
-                  />
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
+                      {t('contact.name')}
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder={t('contact.placeholder.name')}
+                      className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
+                      {t('contact.email')}
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder={t('contact.placeholder.email')}
+                      className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
+                    {t('contact.subject')}
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Asunto
-                  </label>
-                  <input
                     type="text"
-                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none"
-                    placeholder="¿En qué puedo ayudarte?"
+                    placeholder={t('contact.placeholder.subject')}
+                    className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Mensaje
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
+                    {t('contact.message')}
                   </label>
                   <textarea
-                    id="message"
+                    required
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none resize-none"
-                    placeholder="Escribe tu mensaje aquí..."
-                  />
+                    rows={4}
+                    placeholder={t('contact.placeholder.message')}
+                    className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all resize-none"
+                  ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-2 to-brand-3 text-brand-5 font-bold hover:shadow-lg hover:shadow-brand-2/50 transition-all"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-brand-2 via-brand-3 to-brand-4 text-brand-1 font-black shadow-lg hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group"
                 >
-                  <Send className="w-5 h-5" />
-                  Enviar Mensaje
+                  <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  {t('contact.send')}
                 </button>
               </form>
             )}

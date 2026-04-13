@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, Languages } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage, Language } from '../context/LanguageContext';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,14 +30,20 @@ export function Navigation() {
   };
 
   const navItems = [
-    { label: 'Inicio', id: 'hero' },
-    { label: 'Sobre Mí', id: 'about' },
-    { label: 'Proyectos', id: 'projects' },
-    { label: 'Experiencia', id: 'experience' },
-    { label: 'Educación', id: 'education' },
-    { label: 'Hobbies', id: 'hobbies' },
-    { label: 'Testimonios', id: 'testimonials' },
-    { label: 'Contacto', id: 'contact' },
+    { label: t('nav.home'), id: 'hero' },
+    { label: t('nav.about'), id: 'about' },
+    { label: t('nav.projects'), id: 'projects' },
+    { label: t('nav.experience'), id: 'experience' },
+    { label: t('nav.education'), id: 'education' },
+    { label: t('nav.hobbies'), id: 'hobbies' },
+    { label: t('nav.contact'), id: 'contact' },
+  ];
+
+  const languages: { code: Language; label: string; flag: string }[] = [
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'pt', label: 'Português', flag: '🇧🇷' },
+    { code: 'ja', label: '日本語', flag: '🇯🇵' },
   ];
 
   return (
@@ -66,9 +75,44 @@ export function Navigation() {
                 {item.label}
               </button>
             ))}
+            
+            {/* Language Switcher */}
+            <div className="relative ml-2">
+              <button
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                className="p-2 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors flex items-center gap-1"
+                aria-label="Change language"
+              >
+                <Languages className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase">{language}</span>
+              </button>
+
+              {isLangMenuOpen && (
+                <div className="absolute right-0 mt-2 w-40 rounded-xl bg-brand-5 dark:bg-brand-1 border border-brand-2/20 dark:border-brand-5/20 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setLanguage(lang.code);
+                        setIsLangMenuOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${
+                        language === lang.code
+                          ? 'bg-brand-3 text-brand-1 font-bold'
+                          : 'text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <button
               onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
+              className="ml-1 p-2 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -77,6 +121,18 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => {
+                const currentIndex = languages.findIndex(l => l.code === language);
+                const nextIndex = (currentIndex + 1) % languages.length;
+                setLanguage(languages[nextIndex].code);
+              }}
+              className="p-2 rounded-lg text-brand-1 dark:text-brand-5 flex items-center gap-1"
+              aria-label="Change language"
+            >
+              <Languages className="w-5 h-5" />
+              <span className="text-xs font-bold uppercase">{language}</span>
+            </button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-brand-1 dark:text-brand-5"
@@ -102,7 +158,7 @@ export function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-3 rounded-lg text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 transition-colors"
+                className="block w-full text-left px-4 py-3 rounded-xl text-brand-1 dark:text-brand-5 hover:bg-brand-2/10 dark:hover:bg-brand-2/10 font-medium transition-colors"
               >
                 {item.label}
               </button>

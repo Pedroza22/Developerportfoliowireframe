@@ -1,8 +1,12 @@
 import { motion } from 'motion/react';
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import profileImage from '@/assets/875eebb2b9b7623c18a1e44a7502a7b918373026.png';
+import { useLanguage } from '../context/LanguageContext';
+import { CONTACT_INFO } from '../config/constants';
 
 export function Hero() {
+  const { t } = useLanguage();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -14,7 +18,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-brand-1 dark:bg-brand-1 relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1 relative overflow-hidden">
       {/* Decorative background elements for more "illumination" */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-2/20 rounded-full blur-[120px] animate-pulse"></div>
@@ -38,7 +42,7 @@ export function Hero() {
               className="inline-block"
             >
               <span className="px-4 py-2 rounded-full bg-brand-4/10 border border-brand-4/30 text-brand-4 text-sm font-bold backdrop-blur-md shadow-[0_0_15px_rgba(255,203,154,0.1)]">
-                Desarrollador Backend | Tecnólogo en Análisis y Desarrollo
+                {t('hero.badge')}
               </span>
             </motion.div>
 
@@ -46,11 +50,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-5"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-1 dark:text-brand-5"
             >
-              Hola, soy{' '}
+              {t('hero.greeting')}
               <span className="bg-gradient-to-r from-brand-4 via-brand-5 to-brand-3 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(209,232,226,0.2)]">
-                Julián Pedroza
+                {t('hero.name')}
               </span>
             </motion.h1>
 
@@ -58,10 +62,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl text-brand-5/90 max-w-2xl leading-relaxed"
+              className="text-xl text-brand-1/90 dark:text-brand-5/90 max-w-2xl leading-relaxed"
             >
-              Desarrollador de software con más de 2 años de experiencia en el diseño e implementación 
-              de aplicaciones backend y frontend, con enfoque en soluciones escalables, seguras y de alto rendimiento.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -74,13 +77,13 @@ export function Hero() {
                 onClick={() => scrollToSection('projects')}
                 className="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-3 to-brand-4 text-brand-1 font-black hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95"
               >
-                Ver Proyectos
+                {t('hero.viewProjects')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 rounded-xl border-2 border-brand-5/30 text-brand-5 font-bold hover:bg-brand-5/10 transition-all transform hover:-translate-y-1 active:scale-95 backdrop-blur-sm"
+                className="px-8 py-4 rounded-xl border-2 border-brand-1/30 dark:border-brand-5/30 text-brand-1 dark:text-brand-5 font-bold hover:bg-brand-1/10 dark:hover:bg-brand-5/10 transition-all transform hover:-translate-y-1 active:scale-95 backdrop-blur-sm"
               >
-                Contáctame
+                {t('hero.contactMe')}
               </button>
             </motion.div>
 
@@ -91,24 +94,24 @@ export function Hero() {
               className="flex gap-4"
             >
               <a
-                href="https://github.com/Pedroza22"
+                href={CONTACT_INFO.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
+                className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com/in/julian-pedrozaospina"
+                href={CONTACT_INFO.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
+                className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="mailto:julianpedrozaospina@gmail.com"
-                className="p-4 rounded-2xl bg-brand-5/5 text-brand-5 hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-5/10 hover:border-brand-5/30 shadow-lg"
+                href={`mailto:${CONTACT_INFO.email}`}
+                className="p-4 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-1/20 dark:hover:bg-brand-5/20 transition-all hover:scale-110 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-1/30 dark:hover:border-brand-5/30 shadow-lg"
               >
                 <Mail className="w-6 h-6" />
               </a>

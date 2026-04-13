@@ -97,22 +97,22 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group p-6 rounded-2xl bg-white dark:bg-brand-1/50 border border-brand-2/20 dark:border-brand-5/20 hover:border-brand-2 dark:hover:border-brand-2 transition-all hover:shadow-xl"
+              className="group p-6 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-2 dark:hover:border-brand-2 transition-all hover:shadow-xl"
             >
-              <div className="text-brand-2 dark:text-brand-3 mb-4 group-hover:scale-110 transition-transform">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-brand-2 to-brand-3 text-brand-1 mb-4 w-fit group-hover:scale-110 transition-transform">
                 {skill.icon}
               </div>
               <h3 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-2">
                 {skill.title}
               </h3>
-              <p className="text-brand-1/60 dark:text-brand-5/60 text-sm mb-4">
+              <p className="text-brand-1/60 dark:text-brand-5/60 text-sm leading-relaxed mb-4">
                 {skill.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {skill.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="text-xs px-2 py-1 rounded bg-brand-5 dark:bg-brand-1 text-brand-2 dark:text-brand-3 font-medium border border-brand-2/10 dark:border-brand-5/10"
+                    className="px-2 py-1 rounded-md bg-brand-2/10 dark:bg-brand-4/10 text-brand-2 dark:text-brand-4 text-xs font-medium"
                   >
                     {tech}
                   </span>
