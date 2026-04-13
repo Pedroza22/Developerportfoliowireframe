@@ -1,27 +1,37 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download, AlertCircle, Loader2 } from 'lucide-react';
 import cvFile from '@/assets/Hoja de Vida Julian Pedroza O-7.pdf';
 import { useLanguage } from '../context/LanguageContext';
+import { CONTACT_INFO, SOCIAL_LINKS } from '../config/constants';
+import { contactService, type ContactFormData } from '../services/contactService';
 
 export function Contact() {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setStatus('loading');
+    setErrorMessage('');
+
+    const result = await contactService.sendMessage(formData);
+
+    if (result.success) {
+      setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+      setTimeout(() => setStatus('idle'), 5000);
+    } else {
+      setStatus('error');
+      setErrorMessage(result.message || t('contact.errorMsg'));
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,41 +41,26 @@ export function Contact() {
     });
   };
 
-  const contactInfo = [
+  const contactItems = [
     {
       icon: <Mail className="w-6 h-6" />,
-      title: 'Email Principal',
-      value: 'julianpedrozaospina@gmail.com',
-      link: 'mailto:julianpedrozaospina@gmail.com',
+      titleKey: 'contact.info.email',
+      value: CONTACT_INFO.email,
+      link: `mailto:${CONTACT_INFO.email}`,
       gradient: 'from-brand-2 to-brand-3'
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      title: 'Teléfono',
-      value: '+57 321 989 1112',
-      link: 'tel:+573219891112',
+      titleKey: 'contact.info.phone',
+      value: CONTACT_INFO.phone,
+      link: `tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`,
       gradient: 'from-brand-2 to-brand-3'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: 'Ubicación',
-      value: 'Pasto, Nariño, Colombia',
+      titleKey: 'contact.info.location',
+      value: CONTACT_INFO.location,
       gradient: 'from-brand-2 to-brand-3'
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className="w-6 h-6" />,
-      name: 'GitHub',
-      url: 'https://github.com/Pedroza22',
-      handle: '@Pedroza22'
-    },
-    {
-      icon: <Linkedin className="w-6 h-6" />,
-      name: 'LinkedIn',
-      url: 'https://linkedin.com/in/julian-pedrozaospina',
-      handle: 'julian-pedrozaospina'
     }
   ];
 
@@ -101,32 +96,32 @@ export function Contact() {
                 {t('contact.info')}
               </h3>
               <div className="space-y-4">
-                {contactInfo.map((info, index) => (
+                {contactItems.map((item, index) => (
                   <motion.div
-                    key={info.title}
+                    key={item.titleKey}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-4 p-4 rounded-xl bg-brand-1/5 dark:bg-brand-5/5 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-3 transition-colors group"
                   >
-                    <div className={`p-3 rounded-lg bg-gradient-to-br ${info.gradient} text-brand-1 shadow-lg`}>
-                      {info.icon}
+                    <div className={`p-3 rounded-lg bg-gradient-to-br ${item.gradient} text-brand-1 shadow-lg`}>
+                      {item.icon}
                     </div>
                     <div>
                       <p className="text-sm text-brand-1/60 dark:text-brand-5/60 font-medium">
-                        {info.title}
+                        {t(item.titleKey)}
                       </p>
-                      {info.link ? (
+                      {item.link ? (
                         <a
-                          href={info.link}
+                          href={item.link}
                           className="text-lg font-semibold text-brand-1 dark:text-brand-5 hover:text-brand-3 transition-colors"
                         >
-                          {info.value}
+                          {item.value}
                         </a>
                       ) : (
                         <p className="text-lg font-semibold text-brand-1 dark:text-brand-5">
-                          {info.value}
+                          {item.value}
                         </p>
                       )}
                     </div>
@@ -135,24 +130,24 @@ export function Contact() {
               </div>
             </div>
 
-              <div className="pt-8">
-                <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-6">
-                  {t('contact.social')}
-                </h4>
-                <div className="flex gap-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 rounded-xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-3 hover:text-brand-1 transition-all group border border-brand-1/10 dark:border-brand-5/10 shadow-lg"
-                      title={social.name}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
-                </div>
+            <div className="pt-4">
+              <h4 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-6">
+                {t('contact.social')}
+              </h4>
+              <div className="flex gap-4">
+                {SOCIAL_LINKS.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-xl bg-brand-1/5 dark:bg-brand-5/5 text-brand-1 dark:text-brand-5 hover:bg-brand-3 hover:text-brand-1 transition-all group border border-brand-1/10 dark:border-brand-5/10 shadow-lg"
+                    title={social.name}
+                    aria-label={`${t('nav.contact')} ${social.name}`}
+                  >
+                    {social.name === 'GitHub' ? <Github className="w-6 h-6" /> : <Linkedin className="w-6 h-6" />}
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -174,7 +169,7 @@ export function Contact() {
                 </div>
                 <a
                   href={cvFile}
-                  download="CV_Julian_Pedroza.pdf"
+                  download={CONTACT_INFO.cvFileName}
                   className="flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-2 via-brand-3 to-brand-4 text-brand-1 font-black hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 group"
                 >
                   <Download className="w-5 h-5 group-hover:animate-bounce" />
@@ -196,94 +191,130 @@ export function Contact() {
               {t('contact.formTitle')}
             </h3>
 
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-12 text-center"
-              >
-                <div className="w-20 h-20 bg-brand-4/20 rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-12 h-12 text-brand-4" />
-                </div>
-                <h4 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-2">
-                  {t('contact.success')}
-                </h4>
-                <p className="text-brand-1/70 dark:text-brand-5/70">
-                  {t('contact.successMsg')}
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
-                      {t('contact.name')}
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder={t('contact.placeholder.name')}
-                      className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
-                      {t('contact.email')}
-                    </label>
-                    <input
-                      required
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder={t('contact.placeholder.email')}
-                      className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
-                    {t('contact.subject')}
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder={t('contact.placeholder.subject')}
-                    className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-brand-1 dark:text-brand-5">
-                    {t('contact.message')}
-                  </label>
-                  <textarea
-                    required
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder={t('contact.placeholder.message')}
-                    className="w-full px-4 py-3 rounded-xl bg-brand-1/10 dark:bg-brand-5/10 border border-brand-1/20 dark:border-brand-5/20 text-brand-1 dark:text-brand-5 placeholder:text-brand-1/40 dark:placeholder:text-brand-5/40 focus:outline-none focus:ring-2 focus:ring-brand-3/50 transition-all resize-none"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-brand-2 via-brand-3 to-brand-4 text-brand-1 font-black shadow-lg hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group"
+            <AnimatePresence mode="wait">
+              {status === 'success' ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="text-center py-12"
                 >
-                  <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  {t('contact.send')}
-                </button>
-              </form>
-            )}
+                  <div className="w-20 h-20 bg-brand-2/20 text-brand-2 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-12 h-12" />
+                  </div>
+                  <h4 className="text-2xl font-bold text-brand-1 dark:text-brand-5 mb-2">
+                    {t('contact.success')}
+                  </h4>
+                  <p className="text-brand-1/70 dark:text-brand-5/70">
+                    {t('contact.successMsg')}
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
+                  {status === 'error' && (
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                      <p className="text-sm font-medium">{errorMessage}</p>
+                    </div>
+                  )}
+
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-semibold text-brand-1/80 dark:text-brand-5/80 ml-1">
+                        {t('contact.name')}
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder={t('contact.placeholder.name')}
+                        className="w-full px-5 py-4 rounded-xl bg-white dark:bg-brand-1/50 border border-brand-1/10 dark:border-brand-5/10 focus:border-brand-2 dark:focus:border-brand-2 focus:ring-4 focus:ring-brand-2/10 transition-all outline-none text-brand-1 dark:text-brand-5"
+                        aria-label={t('contact.name')}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-semibold text-brand-1/80 dark:text-brand-5/80 ml-1">
+                        {t('contact.email')}
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder={t('contact.placeholder.email')}
+                        className="w-full px-5 py-4 rounded-xl bg-white dark:bg-brand-1/50 border border-brand-1/10 dark:border-brand-5/10 focus:border-brand-2 dark:focus:border-brand-2 focus:ring-4 focus:ring-brand-2/10 transition-all outline-none text-brand-1 dark:text-brand-5"
+                        aria-label={t('contact.email')}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-semibold text-brand-1/80 dark:text-brand-5/80 ml-1">
+                      {t('contact.subject')}
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      required
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder={t('contact.placeholder.subject')}
+                      className="w-full px-5 py-4 rounded-xl bg-white dark:bg-brand-1/50 border border-brand-1/10 dark:border-brand-5/10 focus:border-brand-2 dark:focus:border-brand-2 focus:ring-4 focus:ring-brand-2/10 transition-all outline-none text-brand-1 dark:text-brand-5"
+                      aria-label={t('contact.subject')}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-semibold text-brand-1/80 dark:text-brand-5/80 ml-1">
+                      {t('contact.message')}
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder={t('contact.placeholder.message')}
+                      className="w-full px-5 py-4 rounded-xl bg-white dark:bg-brand-1/50 border border-brand-1/10 dark:border-brand-5/10 focus:border-brand-2 dark:focus:border-brand-2 focus:ring-4 focus:ring-brand-2/10 transition-all outline-none text-brand-1 dark:text-brand-5 resize-none"
+                      aria-label={t('contact.message')}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className="w-full py-5 rounded-xl bg-gradient-to-r from-brand-2 via-brand-3 to-brand-4 text-brand-1 font-black hover:shadow-[0_0_30px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 disabled:opacity-70 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center gap-3 group"
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        <span>{t('contact.sending')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        <span>{t('contact.send')}</span>
+                      </>
+                    )}
+                  </button>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>

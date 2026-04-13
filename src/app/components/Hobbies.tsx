@@ -1,54 +1,23 @@
 import { motion } from 'motion/react';
 import { Music, Gamepad2, Plane, Camera, Book, Dumbbell, UtensilsCrossed } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { hobbies, interestKeys } from '../data/hobbies';
 
 export function Hobbies() {
-  const hobbies = [
-    {
-      title: 'Gastronomía Tolimense',
-      description: 'Fanático de la lechona, el tamal y los bizcochos de mi tierra',
-      icon: <UtensilsCrossed className="w-8 h-8" />
-    },
-    {
-      title: 'Música',
-      description: 'Tocar guitarra y descubrir nuevos géneros musicales',
-      icon: <Music className="w-8 h-8" />
-    },
-    {
-      title: 'Gaming',
-      description: 'Juegos de estrategia y exploración de mundos virtuales',
-      icon: <Gamepad2 className="w-8 h-8" />
-    },
-    {
-      title: 'Viajes',
-      description: 'Explorar nuevas culturas y lugares',
-      icon: <Plane className="w-8 h-8" />
-    },
-    {
-      title: 'Lectura',
-      description: 'Libros de tecnología, ciencia ficción y desarrollo personal',
-      icon: <Book className="w-8 h-8" />
-    },
-    {
-      title: 'Fitness',
-      description: 'Mantener un estilo de vida activo y saludable',
-      icon: <Dumbbell className="w-8 h-8" />
-    }
-  ];
+  const { t } = useLanguage();
 
-  const interests = [
-    'Inteligencia Artificial',
-    'Machine Learning',
-    'Cloud Computing',
-    'DevOps',
-    'Blockchain',
-    'Ciberseguridad',
-    'Arquitectura de Software',
-    'Open Source',
-    'UI/UX Design',
-    'Startups Tech',
-    'Automatización',
-    'Edge Computing'
-  ];
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'UtensilsCrossed': return <UtensilsCrossed className="w-8 h-8" />;
+      case 'Music': return <Music className="w-8 h-8" />;
+      case 'Gamepad2': return <Gamepad2 className="w-8 h-8" />;
+      case 'Plane': return <Plane className="w-8 h-8" />;
+      case 'Camera': return <Camera className="w-8 h-8" />;
+      case 'Book': return <Book className="w-8 h-8" />;
+      case 'Dumbbell': return <Dumbbell className="w-8 h-8" />;
+      default: return <Gamepad2 className="w-8 h-8" />;
+    }
+  };
 
   return (
     <section id="hobbies" className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1">
@@ -61,10 +30,10 @@ export function Hobbies() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-brand-1 dark:text-brand-5 mb-4">
-            Hobbies e Intereses
+            {t('hobbies.title')}
           </h2>
           <p className="text-xl text-brand-1/70 dark:text-brand-5/70 max-w-3xl mx-auto">
-            Más allá del código: mis pasiones y áreas de interés
+            {t('hobbies.subtitle')}
           </p>
         </motion.div>
 
@@ -72,7 +41,7 @@ export function Hobbies() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {hobbies.map((hobby, index) => (
             <motion.div
-              key={hobby.title}
+              key={hobby.titleKey}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -82,13 +51,13 @@ export function Hobbies() {
               <div className="h-2 bg-gradient-to-r from-brand-2 to-brand-3"></div>
               <div className="p-6">
                 <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-brand-2 to-brand-3 text-brand-5 mb-4 group-hover:scale-110 transition-transform">
-                  {hobby.icon}
+                  {getIcon(hobby.iconName)}
                 </div>
                 <h3 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-2">
-                  {hobby.title}
+                  {t(hobby.titleKey)}
                 </h3>
                 <p className="text-brand-1/70 dark:text-brand-5/70">
-                  {hobby.description}
+                  {t(hobby.descriptionKey)}
                 </p>
               </div>
             </motion.div>
@@ -104,22 +73,22 @@ export function Hobbies() {
           className="bg-gradient-to-br from-brand-5/50 to-brand-4/50 dark:from-brand-1 dark:to-brand-2 rounded-2xl p-8 border border-brand-2/20 dark:border-brand-5/20"
         >
           <h3 className="text-3xl font-bold text-brand-1 dark:text-brand-5 mb-6 text-center">
-            Áreas de Interés Tecnológico
+            {t('hobbies.interests.title')}
           </h3>
           <p className="text-center text-brand-1/70 dark:text-brand-5/70 mb-8 max-w-3xl mx-auto">
-            Constantemente aprendiendo y manteniéndome actualizado en las últimas tecnologías y tendencias
+            {t('hobbies.interests.subtitle')}
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            {interests.map((interest, index) => (
+            {interestKeys.map((key, index) => (
               <motion.span
-                key={interest}
+                key={key}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="px-5 py-3 rounded-xl bg-white dark:bg-brand-1 text-brand-1 dark:text-brand-5 font-medium border border-brand-2/20 dark:border-brand-5/20 hover:border-brand-2 dark:hover:border-brand-2 hover:shadow-lg transition-all cursor-default"
               >
-                {interest}
+                {t(key)}
               </motion.span>
             ))}
           </div>
@@ -135,11 +104,10 @@ export function Hobbies() {
         >
           <div className="bg-gradient-to-r from-brand-2 to-brand-3 p-8 rounded-2xl text-brand-5 shadow-2xl">
             <p className="text-2xl font-semibold italic mb-4">
-              "El aprendizaje continuo y la pasión por la tecnología son las claves para crear soluciones innovadoras"
+              {t('hobbies.philosophy.quote')}
             </p>
             <p className="text-brand-5/90">
-              Creo firmemente en el equilibrio entre trabajo y vida personal. Mis hobbies me ayudan a mantener 
-              la creatividad y el enfoque necesarios para enfrentar desafíos técnicos complejos.
+              {t('hobbies.philosophy.text')}
             </p>
           </div>
         </motion.div>

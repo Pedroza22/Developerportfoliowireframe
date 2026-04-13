@@ -1,39 +1,21 @@
 import { motion } from 'motion/react';
 import { Code2, Database, Server, Globe, Cloud } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { skills, softSkillsKeys } from '../data/about';
 
 export function About() {
-  const skills = [
-    {
-      icon: <Server className="w-8 h-8" />,
-      title: 'Backend Development',
-      description: 'Java, Spring Boot, Django, Python, Node.js',
-      technologies: ['Java', 'Spring Boot', 'Django', 'Python', 'Node.js']
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: 'Frontend',
-      description: 'Next.js, React, Flutter, TypeScript, TailwindCSS',
-      technologies: ['Next.js', 'React', 'Flutter', 'TypeScript', 'TailwindCSS']
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: 'Bases de Datos',
-      description: 'PostgreSQL, MySQL, SQL Server, Redis, PL/SQL, DynamoDB, Supabase',
-      technologies: ['PostgreSQL', 'MySQL', 'SQL Server', 'Redis', 'PL/SQL', 'DynamoDB', 'Supabase']
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: 'Cloud & DevOps',
-      description: 'AWS, Azure, Docker, GitHub Actions',
-      technologies: ['AWS', 'Azure', 'Docker', 'GitHub Actions']
-    },
-    {
-      icon: <Code2 className="w-8 h-8" />,
-      title: 'APIs & Otros',
-      description: 'REST APIs, Swagger, Postman, JWT',
-      technologies: ['REST APIs', 'Swagger', 'Postman', 'JWT']
+  const { t } = useLanguage();
+
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Server': return <Server className="w-8 h-8" />;
+      case 'Globe': return <Globe className="w-8 h-8" />;
+      case 'Database': return <Database className="w-8 h-8" />;
+      case 'Cloud': return <Cloud className="w-8 h-8" />;
+      case 'Code2': return <Code2 className="w-8 h-8" />;
+      default: return <Code2 className="w-8 h-8" />;
     }
-  ];
+  };
 
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-5 dark:bg-brand-1">
@@ -46,10 +28,10 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-brand-1 dark:text-brand-5 mb-4">
-            Sobre Mí
+            {t('about.title')}
           </h2>
           <p className="text-xl text-brand-1/70 dark:text-brand-5/70 max-w-3xl mx-auto">
-            Desarrollador de software con enfoque en soluciones escalables, seguras y de alto rendimiento
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -63,26 +45,16 @@ export function About() {
           >
             <div className="prose dark:prose-invert max-w-none text-center">
               <p className="text-lg text-brand-1/80 dark:text-brand-5/80 leading-relaxed">
-                Soy un desarrollador de software con más de 2 años de experiencia en el diseño e implementación 
-                de aplicaciones backend y frontend. Me especializo en crear soluciones escalables, seguras y de 
-                alto rendimiento utilizando tecnologías modernas.
+                {t('about.description.p1')}
               </p>
               <p className="text-lg text-brand-1/80 dark:text-brand-5/80 leading-relaxed">
-                Mi experiencia incluye el desarrollo de componentes backend para orquestación de servicios con 
-                Java y Spring Boot, implementación de pruebas unitarias, optimización de código y despliegue en 
-                ambientes cloud. He participado en proyectos de seguros digitales logrando el despliegue exitoso 
-                de microservicios en producción.
+                {t('about.description.p2')}
               </p>
               <p className="text-lg text-brand-1/80 dark:text-brand-5/80 leading-relaxed">
-                Orgullosamente tolimense y apasionado por mi tierra. Más allá del código, soy un fanático 
-                incansable de la gastronomía de mi región; nada supera una buena lechona, un tamal auténtico 
-                o unos bizcochos tradicionales. Esta conexión con mis raíces me motiva a trabajar con la 
-                misma dedicación y esmero que caracteriza a nuestra gente.
+                {t('about.description.p3')}
               </p>
               <p className="text-lg text-brand-1/80 dark:text-brand-5/80 leading-relaxed">
-                Soy proactivo, con mentalidad de aprendizaje continuo, fuerte capacidad de resolución de problemas 
-                y orientación a resultados. Me apasiona colaborar con equipos multidisciplinarios y contribuir a 
-                proyectos innovadores.
+                {t('about.description.p4')}
               </p>
             </div>
           </motion.div>
@@ -92,7 +64,7 @@ export function About() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
             <motion.div
-              key={skill.title}
+              key={skill.titleKey}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,13 +72,13 @@ export function About() {
               className="group p-6 rounded-2xl bg-brand-1/5 dark:bg-brand-5/5 border border-brand-1/10 dark:border-brand-5/10 hover:border-brand-2 dark:hover:border-brand-2 transition-all hover:shadow-xl"
             >
               <div className="p-3 rounded-xl bg-gradient-to-br from-brand-2 to-brand-3 text-brand-1 mb-4 w-fit group-hover:scale-110 transition-transform">
-                {skill.icon}
+                {getIcon(skill.iconName)}
               </div>
               <h3 className="text-xl font-bold text-brand-1 dark:text-brand-5 mb-2">
-                {skill.title}
+                {t(skill.titleKey)}
               </h3>
               <p className="text-brand-1/60 dark:text-brand-5/60 text-sm leading-relaxed mb-4">
-                {skill.description}
+                {t(skill.descriptionKey)}
               </p>
               <div className="flex flex-wrap gap-2">
                 {skill.technologies.map((tech) => (
@@ -130,20 +102,14 @@ export function About() {
             transition={{ duration: 0.6 }}
             className="mt-16 bg-gradient-to-r from-brand-2 to-brand-3 p-8 rounded-2xl text-brand-5"
           >
-            <h3 className="text-2xl font-bold mb-6 text-center">Habilidades Blandas</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center">{t('about.softSkills.title')}</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {[
-                'Trabajo en equipo',
-                'Liderazgo',
-                'Resolución de problemas',
-                'Adaptabilidad',
-                'Comunicación efectiva'
-              ].map((skill) => (
+              {softSkillsKeys.map((key) => (
                 <div
-                  key={skill}
+                  key={key}
                   className="flex items-center justify-center px-4 py-3 rounded-xl bg-brand-5/10 backdrop-blur-sm text-center"
                 >
-                  <span className="font-medium">{skill}</span>
+                  <span className="font-medium">{t(key)}</span>
                 </div>
               ))}
             </div>
