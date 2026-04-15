@@ -13,7 +13,7 @@ export const en = {
   'nav.hobbies': 'Hobbies',
   'nav.contact': 'Contact',
   
-  'hero.badge': 'Backend Developer | Analysis and Development Technologist',
+  'hero.badge': 'Backend Developer | Software Engineer',
   'hero.greeting': "Hi, I'm ",
   'hero.name': 'Julián Pedroza',
   'hero.description': 'Software developer with over 2 years of experience in designing and implementing backend and frontend applications, focusing on scalable, secure, and high-performance solutions.',
@@ -60,6 +60,34 @@ export const en = {
   'projects.u2group.features.8': 'Responsive design optimized for all devices',
   'projects.detail.description': 'Project Description',
   'projects.detail.features': 'Features and Achievements',
+
+  'projects.avicola.title': 'Poultry Control System',
+  'projects.avicola.description': 'Web application for the control and management of poultry processes.',
+  'projects.avicola.longDescription': 'Development of an interactive interface and control panel to manage farms, sheds, and poultry flocks. Facilitates the tracking of key metrics such as weight, mortality, and feed conversion.',
+  'projects.avicola.features.0': 'Real-time monitoring dashboard',
+  'projects.avicola.features.1': 'Inventory management and stock alerts',
+  'projects.avicola.features.2': 'Detailed tracking by flock and farm',
+
+  'projects.mapacolombia.title': 'Interactive Map of Colombia',
+  'projects.mapacolombia.description': 'Educational application with an interactive map of Colombia.',
+  'projects.mapacolombia.longDescription': 'Web project focused on geographic education, allowing users to interact with the different regions and departments of Colombia, featuring zoom and selection functionalities.',
+  'projects.mapacolombia.features.0': 'Interactive map with clickable regions',
+  'projects.mapacolombia.features.1': 'Smooth zoom and navigation controls',
+  'projects.mapacolombia.features.2': 'User-friendly interface for educational environments',
+
+  'projects.catalogo.title': 'As de Nariño Catalog',
+  'projects.catalogo.description': 'Virtual product catalog for a trading company.',
+  'projects.catalogo.longDescription': 'Web platform to display products for the As de Nariño trading company, with a modern design optimized for user experience.',
+  'projects.catalogo.features.0': 'Attractive product visualization',
+  'projects.catalogo.features.1': 'Responsive design for mobile devices',
+  'projects.catalogo.features.2': 'Integration with shopping cart or quotes',
+
+  'projects.mercadolibre.title': 'Mercado Libre Clone',
+  'projects.mercadolibre.description': 'Cloned interface of the popular e-commerce platform Mercado Libre.',
+  'projects.mercadolibre.longDescription': 'Recreation of the main interface of Mercado Libre, demonstrating advanced layout skills with TailwindCSS and React to achieve a design identical to the original.',
+  'projects.mercadolibre.features.0': 'Design faithful to the original interface',
+  'projects.mercadolibre.features.1': 'Product and offer carousel',
+  'projects.mercadolibre.features.2': 'Reusable components and scalable structure',
 
   'experience.title': 'Professional Experience',
   'experience.subtitle': 'Over 2 years of experience in software development and technical support',

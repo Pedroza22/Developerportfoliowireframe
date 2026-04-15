@@ -59,7 +59,7 @@ export function Navigation() {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-2xl font-black bg-gradient-to-r from-brand-5 via-brand-4 to-brand-5 bg-clip-text text-transparent hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(209,232,226,0.3)]"
+            className="text-2xl font-black bg-gradient-to-r from-brand-2 via-brand-1 to-brand-2 dark:from-brand-5 dark:via-brand-4 dark:to-brand-5 bg-clip-text text-transparent hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(209,232,226,0.3)]"
           >
             JP
           </button>

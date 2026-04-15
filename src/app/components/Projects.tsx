@@ -13,7 +13,7 @@ export function Projects() {
 
   const filteredProjects = filter === 'all' 
     ? projects 
-    : projects.filter(p => p.category === filter);
+    : projects.filter((p: Project) => p.category === filter);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -65,7 +65,7 @@ export function Projects() {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project: Project, index: number) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}

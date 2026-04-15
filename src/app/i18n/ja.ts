@@ -13,7 +13,7 @@ export const ja = {
   'nav.hobbies': '趣味',
   'nav.contact': 'お問い合わせ',
   
-  'hero.badge': 'バックエンドエンジニア | 分析・開発技術者',
+  'hero.badge': 'バックエンドエンジニア | ソフトウェアエンジニア',
   'hero.greeting': 'こんにちは、',
   'hero.name': 'フリアン・ペドロサです',
   'hero.description': 'バックエンドおよびフロントエンドアプリケーションの設計と実装において2年以上の経験を持つソフトウェア開発者です。スケーラブルで安全、かつ高性能なソリューションに重点を置いています。',
@@ -50,6 +50,34 @@ export const ja = {
   'projects.u2group.description': 'マーケットプレイス、管理ダッシュボード、見積もりシステムを備えた包括的なWebプラットフォーム',
   'projects.detail.description': 'プロジェクトの説明',
   'projects.detail.features': '機能と実績',
+
+  'projects.avicola.title': '養鶏管理システム',
+  'projects.avicola.description': '養鶏プロセスの制御と管理のためのWebアプリケーション。',
+  'projects.avicola.longDescription': '農場、鶏舎、および鶏群を管理するためのインタラクティブなインターフェースとコントロールパネルの開発。体重、死亡率、飼料要求率などの主要な指標の追跡を容易にします。',
+  'projects.avicola.features.0': 'リアルタイム監視ダッシュボード',
+  'projects.avicola.features.1': '在庫管理と在庫アラート',
+  'projects.avicola.features.2': '鶏群と農場ごとの詳細な追跡',
+
+  'projects.mapacolombia.title': 'コロンビアのインタラクティブマップ',
+  'projects.mapacolombia.description': 'コロンビアのインタラクティブな地図を備えた教育アプリケーション。',
+  'projects.mapacolombia.longDescription': '地理教育に焦点を当てたWebプロジェクトで、ユーザーはズームや選択機能を備えたコロンビアのさまざまな地域や県と対話できます。',
+  'projects.mapacolombia.features.0': 'クリック可能な領域を持つインタラクティブな地図',
+  'projects.mapacolombia.features.1': 'スムーズなズームとナビゲーションコントロール',
+  'projects.mapacolombia.features.2': '教育環境向けのユーザーフレンドリーなインターフェース',
+
+  'projects.catalogo.title': 'アス・デ・ナリーニョ カタログ',
+  'projects.catalogo.description': '商社向けの仮想製品カタログ。',
+  'projects.catalogo.longDescription': 'ユーザーエクスペリエンスのために最適化されたモダンなデザインで、アス・デ・ナリーニョ商社の製品を表示するためのWebプラットフォーム。',
+  'projects.catalogo.features.0': '魅力的な製品の視覚化',
+  'projects.catalogo.features.1': 'モバイルデバイス向けのレスポンシブデザイン',
+  'projects.catalogo.features.2': 'ショッピングカートまたは見積もりとの統合',
+
+  'projects.mercadolibre.title': 'Mercado Libre クローン',
+  'projects.mercadolibre.description': '人気のあるeコマースプラットフォームMercado Libreのクローンインターフェース。',
+  'projects.mercadolibre.longDescription': 'Mercado Libreのメインインターフェースの再現。オリジナルと同じデザインを実現するためのTailwindCSSとReactを使用した高度なレイアウトスキルを示しています。',
+  'projects.mercadolibre.features.0': 'オリジナルインターフェースに忠実なデザイン',
+  'projects.mercadolibre.features.1': '製品とオファーのカルーセル',
+  'projects.mercadolibre.features.2': '再利用可能なコンポーネントとスケーラブルな構造',
 
   'experience.title': '職務経歴',
   'experience.subtitle': 'ソフトウェア開発およびテクニカルサポートにおける2年以上の経験',

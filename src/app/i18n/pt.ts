@@ -13,7 +13,7 @@ export const pt = {
   'nav.hobbies': 'Hobbies',
   'nav.contact': 'Contato',
   
-  'hero.badge': 'Desenvolvedor Backend | Tecnólogo em Análise e Desenvolvimento',
+  'hero.badge': 'Desenvolvedor Backend | Engenheiro de Software',
   'hero.greeting': 'Olá, eu sou ',
   'hero.name': 'Julián Pedroza',
   'hero.description': 'Desenvolvedor de software com mais de 2 anos de experiência no design e implementação de aplicações backend e frontend, com foco em soluções escaláveis, seguras e de alto desempenho.',
@@ -50,6 +50,34 @@ export const pt = {
   'projects.u2group.description': 'Plataforma web abrangente com marketplace, painel administrativo e sistema de cotação',
   'projects.detail.description': 'Descrição do Projeto',
   'projects.detail.features': 'Recursos e Conquistas',
+
+  'projects.avicola.title': 'Sistema de Controle Avícola',
+  'projects.avicola.description': 'Aplicação web para controle e gestão de processos avícolas.',
+  'projects.avicola.longDescription': 'Desenvolvimento de uma interface interativa e painel de controle para administrar fazendas, galpões e lotes de aves. Facilita o rastreamento de métricas como peso, mortalidade e conversão alimentar.',
+  'projects.avicola.features.0': 'Dashboard de monitoramento em tempo real',
+  'projects.avicola.features.1': 'Gestão de estoque e alertas',
+  'projects.avicola.features.2': 'Acompanhamento detalhado por lote e fazenda',
+
+  'projects.mapacolombia.title': 'Mapa Interativo da Colômbia',
+  'projects.mapacolombia.description': 'Aplicativo educacional com um mapa interativo da Colômbia.',
+  'projects.mapacolombia.longDescription': 'Projeto web voltado à educação geográfica, permitindo aos usuários interagir com as diferentes regiões da Colômbia, incluindo funções de zoom e seleção.',
+  'projects.mapacolombia.features.0': 'Mapa interativo com regiões clicáveis',
+  'projects.mapacolombia.features.1': 'Controles suaves de zoom e navegação',
+  'projects.mapacolombia.features.2': 'Interface amigável para ambientes educacionais',
+
+  'projects.catalogo.title': 'Catálogo As de Nariño',
+  'projects.catalogo.description': 'Catálogo virtual de produtos para comercializadora.',
+  'projects.catalogo.longDescription': 'Plataforma web para exibir produtos com um design moderno e otimizado para a experiência do usuário.',
+  'projects.catalogo.features.0': 'Visualização atraente de produtos',
+  'projects.catalogo.features.1': 'Design responsivo para dispositivos móveis',
+  'projects.catalogo.features.2': 'Integração com carrinho de compras ou cotações',
+
+  'projects.mercadolibre.title': 'Clone do Mercado Livre',
+  'projects.mercadolibre.description': 'Interface clonada da popular plataforma de e-commerce Mercado Livre.',
+  'projects.mercadolibre.longDescription': 'Recriação da interface principal do Mercado Livre, demonstrando habilidades em React e TailwindCSS.',
+  'projects.mercadolibre.features.0': 'Design fiel à interface original',
+  'projects.mercadolibre.features.1': 'Carrossel de produtos e ofertas',
+  'projects.mercadolibre.features.2': 'Componentes reutilizáveis e estrutura escalável',
 
   'experience.title': 'Experiência Profissional',
   'experience.subtitle': 'Mais de 2 anos de experiência em desenvolvimento de software e suporte técnico',
