@@ -36,8 +36,7 @@ export const experiences: Experience[] = [
       'experience.systecol.achievements.0',
       'experience.systecol.achievements.1',
       'experience.systecol.achievements.2',
-      'experience.systecol.achievements.3',
-      'experience.systecol.achievements.4'
+      'experience.systecol.achievements.3'
     ],
     technologies: ['Windows', 'Linux', 'Hardware', 'Redes', 'Soporte Técnico']
   },
@@ -51,8 +50,7 @@ export const experiences: Experience[] = [
       'experience.parish.achievements.0',
       'experience.parish.achievements.1',
       'experience.parish.achievements.2',
-      'experience.parish.achievements.3',
-      'experience.parish.achievements.4'
+      'experience.parish.achievements.3'
     ],
     technologies: ['Bases de Datos', 'Excel', 'Office', 'SQL', 'Digitalización']
   }

@@ -2,7 +2,7 @@ export interface Skill {
   titleKey: string;
   descriptionKey: string;
   technologies: string[];
-  iconName: 'Server' | 'Globe' | 'Database' | 'Cloud' | 'Code2';
+  iconName: 'Server' | 'Globe' | 'Database' | 'Cloud' | 'Code2' | 'Brain';
 }
 
 export const skills: Skill[] = [
@@ -35,6 +35,12 @@ export const skills: Skill[] = [
     titleKey: 'about.skills.api.title',
     descriptionKey: 'about.skills.api.description',
     technologies: ['REST APIs', 'Swagger', 'Postman', 'JWT']
+  },
+  {
+    iconName: 'Brain',
+    titleKey: 'about.skills.ai.title',
+    descriptionKey: 'about.skills.ai.description',
+    technologies: ['Machine Learning', 'OpenAI API', 'RAG', 'LangChain']
   }
 ];
 

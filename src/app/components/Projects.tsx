@@ -86,7 +86,12 @@ export function Projects() {
                     {t('common.viewDetails')} <ExternalLink className="w-4 h-4" />
                   </span>
                 </div>
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
+                  {project.status === 'production' && (
+                    <span className="px-3 py-1 rounded-lg bg-green-500/90 text-sm font-medium text-white shadow-lg backdrop-blur-md">
+                      {t('common.productive')}
+                    </span>
+                  )}
                   <span className="flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-5/90 dark:bg-brand-1/90 text-sm font-medium text-brand-1 dark:text-brand-5 shadow-lg">
                     {getCategoryIcon(project.category)}
                     {project.category}

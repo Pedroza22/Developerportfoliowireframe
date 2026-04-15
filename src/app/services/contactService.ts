@@ -10,19 +10,8 @@ export interface ContactFormData {
 export const contactService = {
   async sendMessage(data: ContactFormData): Promise<{ success: boolean; message?: string }> {
     try {
-      // Reemplaza "TU_FORMSPREE_ID" con el ID real que te dé Formspree. 
-      // Debería ser algo como "xqkjdqjd"
-      const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'mwvapaor';
+      const formspreeId = 'mwvapaor'; // Integrado directamente según tu requerimiento
       
-      // Si aún no se ha configurado el ID real, mostramos una advertencia en consola
-      // y simulamos el envío para no romper la UI.
-      if (formspreeId === 'TU_FORMSPREE_ID') {
-        console.warn('Formspree ID no configurado. Simulando envío. Para recibir correos reales, cambia TU_FORMSPREE_ID por tu ID real.');
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log('Form data submitted (Simulated):', data);
-        return { success: true };
-      }
-
       // Envío real a Formspree
       const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',

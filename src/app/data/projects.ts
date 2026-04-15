@@ -11,6 +11,7 @@ export interface Project {
   longDescriptionKey: string;
   technologies: string[];
   category: 'Full Stack' | 'Backend' | 'Frontend';
+  status?: 'production' | 'development';
   image: string;
   githubUrl?: string;
   liveUrl?: string;
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.u2group.longDescription',
     technologies: ['Next.js', 'Django REST', 'PostgreSQL', 'Google Maps API', 'JWT', 'TailwindCSS'],
     category: 'Full Stack',
+    status: 'production',
     image: u2groupImg,
     liveUrl: 'https://www.u2.group',
     githubUrl: 'https://github.com/Pedroza22/U2GroupWeb.git',
@@ -79,6 +81,7 @@ export const projects: Project[] = [
     longDescriptionKey: 'projects.catalogo.longDescription',
     technologies: ['React', 'Next.js', 'TailwindCSS'],
     category: 'Frontend',
+    status: 'production',
     image: catalogoImg,
     liveUrl: 'https://catalogo-one-eosin.vercel.app/',
     githubUrl: 'https://github.com/Pedroza22/Catalogo.git',

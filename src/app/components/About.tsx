@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Code2, Database, Server, Globe, Cloud } from 'lucide-react';
+import { Code2, Database, Server, Globe, Cloud, Brain } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { skills, softSkillsKeys } from '../data/about';
 
@@ -13,6 +13,7 @@ export function About() {
       case 'Database': return <Database className="w-8 h-8" />;
       case 'Cloud': return <Cloud className="w-8 h-8" />;
       case 'Code2': return <Code2 className="w-8 h-8" />;
+      case 'Brain': return <Brain className="w-8 h-8" />;
       default: return <Code2 className="w-8 h-8" />;
     }
   };
@@ -61,7 +62,7 @@ export function About() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.titleKey}

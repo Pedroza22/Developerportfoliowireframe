@@ -26,8 +26,8 @@ export function Hero() {
         <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-brand-4/5 dark:bg-brand-4/10 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-4 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -126,7 +126,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center lg:justify-start lg:pl-12"
           >
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-brand-3 to-brand-4 rounded-3xl blur-3xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"></div>

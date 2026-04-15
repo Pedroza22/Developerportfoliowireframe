@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Languages } from 'lucide-react';
+import { Menu, X, Moon, Sun, Languages, FileDown } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage, Language } from '../context/LanguageContext';
+import cvFile from '@/assets/CV_Julian_Pedroza.pdf';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -117,6 +118,16 @@ export function Navigation() {
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
+
+            <a
+              href={cvFile}
+              download="CV_Julian_Pedroza.pdf"
+              className="ml-2 flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-brand-2 to-brand-3 text-brand-1 font-bold hover:shadow-[0_0_15px_rgba(217,176,140,0.4)] transition-all transform hover:-translate-y-0.5 active:scale-95"
+              aria-label={t('contact.cvDownload')}
+            >
+              <FileDown className="w-4 h-4" />
+              <span>CV</span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -147,6 +158,14 @@ export function Navigation() {
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+            <a
+              href={cvFile}
+              download="CV_Julian_Pedroza.pdf"
+              className="p-2 rounded-lg bg-gradient-to-r from-brand-2 to-brand-3 text-brand-1"
+              aria-label={t('contact.cvDownload')}
+            >
+              <FileDown className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </div>

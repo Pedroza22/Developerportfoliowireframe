@@ -1,4 +1,5 @@
 export const es = {
+  'common.productive': 'Productivo',
   'common.colombia': 'Colombia',
   'common.viewCode': 'Ver Código',
   'common.viewLive': 'Ver en Vivo',
@@ -36,6 +37,8 @@ export const es = {
   'about.skills.cloud.description': 'AWS, Azure, Docker, GitHub Actions',
   'about.skills.api.title': 'APIs & Otros',
   'about.skills.api.description': 'REST APIs, Swagger, Postman, JWT',
+  'about.skills.ai.title': 'Inteligencia Artificial',
+  'about.skills.ai.description': 'Machine Learning, OpenAI API, RAG, LangChain',
   'about.softSkills.title': 'Habilidades Blandas',
   'about.softSkills.teamwork': 'Trabajo en equipo',
   'about.softSkills.leadership': 'Liderazgo',
@@ -103,6 +106,22 @@ export const es = {
   'experience.pragma.achievements.5': 'Participación en proyectos de seguros digitales (SOAT Mundial): despliegue exitoso de tres microservicios en producción',
   'experience.pragma.achievements.6': 'Colaboración efectiva con equipos de testing, QA y arquitectura',
 
+  'experience.systecol.title': 'Técnico de Soporte y Mantenimiento',
+  'experience.systecol.period': '2018 - 2019',
+  'experience.systecol.description': 'Soporte técnico integral y mantenimiento de equipos informáticos.',
+  'experience.systecol.achievements.0': 'Diagnóstico y reparación de equipos de cómputo',
+  'experience.systecol.achievements.1': 'Mantenimiento preventivo y correctivo de hardware y software',
+  'experience.systecol.achievements.2': 'Instalación y configuración de sistemas operativos',
+  'experience.systecol.achievements.3': 'Soporte técnico presencial y remoto',
+
+  'experience.parish.title': 'Soporte Técnico y Digitalización',
+  'experience.parish.period': '2020 - 2022',
+  'experience.parish.description': 'Manejo de sistemas de información parroquiales y soporte tecnológico.',
+  'experience.parish.achievements.0': 'Soporte técnico a usuarios y equipos',
+  'experience.parish.achievements.1': 'Manejo de bases de datos y sistemas ofimáticos',
+  'experience.parish.achievements.2': 'Digitalización de registros históricos',
+  'experience.parish.achievements.3': 'Migración de registros en físico a base de datos online',
+
   'education.title': 'Educación y Formación',
   'education.subtitle': 'Mi trayectoria académica y certificaciones profesionales',
   'education.highlights.title': 'Destacados:',
@@ -142,7 +161,7 @@ export const es = {
   'education.lang.spanish.name': 'Español',
   'education.lang.spanish.level': 'Nativo',
   'education.lang.english.name': 'Inglés',
-  'education.lang.english.level': 'Intermedio (B1)',
+  'education.lang.english.level': 'Estudiando actualmente en el Centro de Idiomas - Universidad de Nariño',
 
   'hobbies.title': 'Hobbies e Intereses',
   'hobbies.subtitle': 'Más allá del código: mis pasiones y áreas de interés',
